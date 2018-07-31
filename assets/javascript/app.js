@@ -28,4 +28,27 @@ $(document).ready(function () {
   }
   setInterval(update, 60000);
 
+
+  // Button on-click
+  $(".cuisine-btn").on("click", function(){
+    // grabs value from button
+    // stores it in a variable
+    var cuisineChoice = $(this).attr("data-name");
+
+    // logs to console
+    console.log("Cuisine choice: " + cuisineChoice);
+  })
+
+  // on submit
+  $("#submit-button").on("click", function(){
+    event.preventDefault();
+    // grabs input value
+    // stores in varaible
+    var userLocation = $("#location-input").val().trim()
+
+    // logs to console
+    console.log("Location: " + userLocation);
+
+  })
+
 })
