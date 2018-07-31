@@ -1,12 +1,43 @@
 html,
 body {
-  background-color: white;  
-  height: 100%;
+  background: url("../images/citrus-background.jpg"); 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  letter-spacing: 1.5px;
+}
+
+.navbar {
+  background-color: #382718;
+  font-family: "Homemade Apple", cursive;
+}
+
+a {
+  color: #F9D5AC;
+  font-weight: bold;
+ }
+
+.navbar-brand {
+  background-color: #382718;
+  font-size: 30px;
+  letter-spacing: 2px;
+}
+
+.clock {
+  float: right;
+  background:#382718;
+  color:  #F9D5AC;
+  text-align: right;
+  text-shadow: 0 0 3px #fff;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 
 body {
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
 }
 
 .content {
@@ -20,29 +51,54 @@ body {
 
 #buttons-view {
   min-height: 150px;
-  background-color: grey;
+  background-color: #a57548;
+  opacity: .9;
   margin-bottom: 20px;
   padding: 15px;
 }
 
 #go-out {
-  background-color: grey;
+  background-color: #a57548;
+  opacity: .9;
   min-height: 400px;
+  color: #382718;
 }
 
-#submit-button {
+#submit-button, button {
   margin-left: 10px; 
+  color: #F9D5AC;
+  background-color: #382718;
+  border: 1px solid #382718;
+  letter-spacing: 1.5px;
+}
+
+button {
+  padding: 3px;
+  font-size: 20px;
+  border-radius: 2px;
+}
+
+button:hover {
+  background-color: #BC956B;
 }
 
 #stay-in {
-  background-color: grey;
+  background-color: #a57548;
+  opacity: .9;
+  color: #382718;
   min-height: 400px;
 }
 
+/*I made this a sticky footer...feel free to "unstick"*/
 .footer {
   flex-shrink: 0;
   text-align: center;
-  background: grey;
+  background:#382718;
   height: 50px;
   line-height: 50px;
+  position: fixed;   
+  bottom:0;          	
+  left:0;            
+  width: 100%;
+  color: #F9D5AC;
 }
