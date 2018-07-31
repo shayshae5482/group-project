@@ -50,21 +50,31 @@ body {
 }
 
 #buttons-view {
-  min-height: 150px;
+  min-height: 100px;
   background-color: #a57548;
   opacity: .9;
+  margin-top: 15px;
   margin-bottom: 20px;
   padding: 15px;
 }
 
-#go-out {
-  background-color: #a57548;
-  opacity: .9;
-  min-height: 400px;
-  color: #382718;
+#submit-button {
+  margin-left: 10px; 
+  color: #F9D5AC;
+  background-color: #382718;
+  border: 1px solid #382718;
+  letter-spacing: 1.5px;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: 0;
 }
 
-#submit-button, button {
+button {
+  padding: 3px;
+  font-size: 20px;
+  border-radius: 2px;
+  min-width: 100px;
+  margin: 5px;
   margin-left: 10px; 
   color: #F9D5AC;
   background-color: #382718;
@@ -72,21 +82,22 @@ body {
   letter-spacing: 1.5px;
 }
 
-button {
-  padding: 3px;
-  font-size: 20px;
-  border-radius: 2px;
-}
 
 button:hover {
   background-color: #BC956B;
+  border: solid 1px #C3AE03;
 }
 
+/* Shared styling for these divs */
+#go-out,
 #stay-in {
   background-color: #a57548;
   opacity: .9;
   color: #382718;
   min-height: 400px;
+  margin-bottom: 100px;
+  padding: 10px;
+  padding-left: 15px;
 }
 
 /*I made this a sticky footer...feel free to "unstick"*/
@@ -94,8 +105,8 @@ button:hover {
   flex-shrink: 0;
   text-align: center;
   background:#382718;
-  height: 50px;
-  line-height: 50px;
+  height: 45px;
+  line-height: 45px;
   position: fixed;   
   bottom:0;          	
   left:0;            
