@@ -91,12 +91,11 @@ $(document).ready(function () {
   $(".cuisine-btn").on("click", function(){
     // grabs value from button
     // stores it in a variable
-    var cuisineChoice = $(this).attr("data-name");
-    displayRestaurants();
     cuisineChoice = $(this).attr("data-name");
 
     // logs to console
     console.log("Cuisine choice: " + cuisineChoice);
+
     displayRestaurants();
   })
 
@@ -164,7 +163,7 @@ $.ajax({
 
     var yummlyQueryURL = "https://api.yummly.com/v1/api/recipes?_app_id=" + yummlyAppID + "&_app_key=" + yummlyAPIkey + "&q=" + cuisineChoice; 
 
-    
+
     $.ajax({
     url: yummlyQueryURL,
     method: "GET"
