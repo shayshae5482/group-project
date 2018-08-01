@@ -91,8 +91,11 @@ $(document).ready(function () {
   $(".cuisine-btn").on("click", function(){
     // grabs value from button
     // stores it in a variable
+<<<<<<< HEAD
     var cuisineChoice = $(this).attr("data-name");
     displayRestaurants();
+=======
+>>>>>>> 4b650f113efbd36add1e4d4ceadea89331e653cc
     cuisineChoice = $(this).attr("data-name");
 
     // logs to console
@@ -124,13 +127,17 @@ function displayRestaurants() {
 
 //Zomato API key//
 
+<<<<<<< HEAD
 var queryURL= "https://developers.zomato.com/api/v2.1/categories";
+=======
+>>>>>>> 4b650f113efbd36add1e4d4ceadea89331e653cc
 // var userKey = '281d1810ef0a4d12651256e7bd43fad2';
 
 // var queryURL = userKey + "https://developers.zomato.com/api/v2.1/cuisines";
 
 // //Performing GET response to get Zomato cuisines in a particular city. 
 
+<<<<<<< HEAD
 $.ajax({
   type: "POST",
   beforeSend: function(request) {
@@ -142,6 +149,8 @@ $.ajax({
      }
 });
 
+=======
+>>>>>>> 4b650f113efbd36add1e4d4ceadea89331e653cc
 // $.ajax({
 
 //   url: queryURL + "set cuisines=10" + "city_id",
@@ -191,5 +200,8 @@ response.matches[i].imageUrlsBySize.90
 
 Thumbnail
 response.matches[i].smallImageUrls[0]
+
+Link to recipe:
+https://www.yummly.com/recipe/ + matches[0].id
 
 */ 
