@@ -91,12 +91,9 @@ $(document).ready(function () {
   $(".cuisine-btn").on("click", function(){
     // grabs value from button
     // stores it in a variable
-<<<<<<< HEAD
     var cuisineChoice = $(this).attr("data-name");
     displayRestaurants();
-=======
     cuisineChoice = $(this).attr("data-name");
->>>>>>> 4b94d477e8cb994d8fe8f48439141e3ae11e1d7e
 
     // logs to console
     console.log("Cuisine choice: " + cuisineChoice);
@@ -127,17 +124,13 @@ function displayRestaurants() {
 
 //Zomato API key//
 
-<<<<<<< HEAD
 var queryURL= "https://developers.zomato.com/api/v2.1/categories";
-=======
 // var userKey = '281d1810ef0a4d12651256e7bd43fad2';
 
 // var queryURL = userKey + "https://developers.zomato.com/api/v2.1/cuisines";
->>>>>>> 4b94d477e8cb994d8fe8f48439141e3ae11e1d7e
 
 // //Performing GET response to get Zomato cuisines in a particular city. 
 
-<<<<<<< HEAD
 $.ajax({
   type: "POST",
   beforeSend: function(request) {
@@ -148,8 +141,7 @@ $.ajax({
     console.log(response)
      }
 });
-}
-=======
+
 // $.ajax({
 
 //   url: queryURL + "set cuisines=10" + "city_id",
@@ -201,4 +193,3 @@ Thumbnail
 response.matches[i].smallImageUrls[0]
 
 */ 
->>>>>>> 4b94d477e8cb994d8fe8f48439141e3ae11e1d7e
