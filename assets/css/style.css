@@ -18,11 +18,14 @@ a {
   color: #F9D5AC;
   font-weight: bold;
  }
+ 
 
 .navbar-brand {
   background-color: #382718;
   font-size: 30px;
   letter-spacing: 2px;
+  color:  #F9D5AC;
+
 }
 
 .clock {
