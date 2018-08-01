@@ -5,6 +5,8 @@
     <title>Place ID Geocoder</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
+
+</head>
     <style>
         /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -48,6 +50,10 @@
             font-weight: bold;
         }
 
+        .address {
+            font-weight: bold;
+        }
+
         #infowindow-content {
             display: none;
         }
@@ -56,15 +62,15 @@
             display: inline;
         }
     </style>
-</head>
+
 
 <body>
     <input id="pac-input" class="controls" type="text" placeholder="Enter a location">
     <div id="map"></div>
     <div id="infowindow-content">
         <span id="place-name" class="title"></span>
-        <br>
-        <span id="place-address"></span>
+        <br><br>
+        <span id="place-address" class="address"></span>
     </div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzU5XUoyGzYtq3mVaTpkkcGRm8wu6AyUU&libraries=places&callback=initMap"
         async defer></script>
