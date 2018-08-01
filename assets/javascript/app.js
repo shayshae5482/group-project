@@ -53,6 +53,9 @@ function initMap() {
     });
 }
 
+
+var cuisineChoice;
+
 $(document).ready(function () {
   // Initial array of food choices
   var cuisines = ["Mexican", "Italian", "Chinese", "Barbeque", "Wings", "Hamburgers", "Vegetarian", "American", "Thai", "Deli", "Greek", "Fast Food", "Pizza"];
@@ -88,11 +91,16 @@ $(document).ready(function () {
   $(".cuisine-btn").on("click", function(){
     // grabs value from button
     // stores it in a variable
+<<<<<<< HEAD
     var cuisineChoice = $(this).attr("data-name");
     displayRestaurants();
+=======
+    cuisineChoice = $(this).attr("data-name");
+>>>>>>> 4b94d477e8cb994d8fe8f48439141e3ae11e1d7e
 
     // logs to console
     console.log("Cuisine choice: " + cuisineChoice);
+    displayRestaurants();
   })
 
   // on submit
@@ -119,10 +127,17 @@ function displayRestaurants() {
 
 //Zomato API key//
 
+<<<<<<< HEAD
 var queryURL= "https://developers.zomato.com/api/v2.1/categories";
+=======
+// var userKey = '281d1810ef0a4d12651256e7bd43fad2';
 
-//Performing GET response to get Zomato cuisines in a particular city. 
+// var queryURL = userKey + "https://developers.zomato.com/api/v2.1/cuisines";
+>>>>>>> 4b94d477e8cb994d8fe8f48439141e3ae11e1d7e
 
+// //Performing GET response to get Zomato cuisines in a particular city. 
+
+<<<<<<< HEAD
 $.ajax({
   type: "POST",
   beforeSend: function(request) {
@@ -134,3 +149,56 @@ $.ajax({
      }
 });
 }
+=======
+// $.ajax({
+
+//   url: queryURL + "set cuisines=10" + "city_id",
+//   method: "GET"
+//   }).then(function(response) {
+
+//       //test to see if the restuarants populate or if it's a hot mess//
+//       console.log(response);
+
+//       //if it consoles correctly, then use the code below to populate in the div
+//       //$("#go-out").text(JSON.stringify(response));
+//   });
+// }
+
+
+    // yummly API call
+
+    var yummlyAPIkey = "d246cc7b49fa9a139f8dbcbac1a815c2";
+    var yummlyAppID = "3fce4689";
+
+    var yummlyQueryURL = "https://api.yummly.com/v1/api/recipes?_app_id=" + yummlyAppID + "&_app_key=" + yummlyAPIkey + "&q=" + cuisineChoice; 
+
+    $.ajax({
+    url: yummlyQueryURL,
+    method: "GET"
+    })
+    
+    .then(function(response) {
+
+        //test to see if the restuarants populate or if it's a hot mess//
+        console.log(response);
+
+        //if it consoles correctly, then use the code below to populate in the div
+        //$("#go-out").text(JSON.stringify(response));
+
+        console.log(response.matches[0].recipeName);
+    });
+};
+
+/* Notes on yummly api
+
+How to get to recipeName:
+response.matches[i].recipeName
+
+Big image?
+response.matches[i].imageUrlsBySize.90
+
+Thumbnail
+response.matches[i].smallImageUrls[0]
+
+*/ 
+>>>>>>> 4b94d477e8cb994d8fe8f48439141e3ae11e1d7e
