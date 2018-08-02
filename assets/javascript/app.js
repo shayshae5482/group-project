@@ -124,38 +124,27 @@ function displayRestaurants() {
 
 //Zomato API key//
 
-var queryURL= "https://developers.zomato.com/api/v2.1/categories";
-// var userKey = '281d1810ef0a4d12651256e7bd43fad2';
-
-// var queryURL = userKey + "https://developers.zomato.com/api/v2.1/cuisines";
-
-// //Performing GET response to get Zomato cuisines in a particular city. 
+var queryURL= "https://developers.zomato.com/api/v2.1/search?entity_id=10981&entity_type=city&q=chinese";
 
 $.ajax({
-  type: "POST",
-  beforeSend: function(request) {
-    request.setRequestHeader("user-key", '281d1810ef0a4d12651256e7bd43fad2');
-  },
+  type: "GET",
+  headers: {"X-Zomato-API-Key": "281d1810ef0a4d12651256e7bd43fad2"},
   url: queryURL,
   success: function(response) {
-    console.log(response)
+
+    var results = response.restaurants;
+    console.log(results);
+
+      for (var i = 0; i < results.length; i++) {
+          var restaurantAddress = $(".item");
+          var location = results[i].restaurant.location.address;
+
+    console.log(location);
+    var pOne = $("<p>").text("Restaurant Location: " + location);
+    restaurantAddress.prepend(pOne);
+      }
      }
 });
-
-// $.ajax({
-
-//   url: queryURL + "set cuisines=10" + "city_id",
-//   method: "GET"
-//   }).then(function(response) {
-
-//       //test to see if the restuarants populate or if it's a hot mess//
-//       console.log(response);
-
-//       //if it consoles correctly, then use the code below to populate in the div
-//       //$("#go-out").text(JSON.stringify(response));
-//   });
-// }
-
 
     // yummly API call
 
