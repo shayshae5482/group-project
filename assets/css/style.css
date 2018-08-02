@@ -27,6 +27,11 @@ a {
   color:  #F9D5AC;
 
 }
+h2 {
+  font-weight: bold;
+  font-size: 20px;
+  color: #58391e;
+}
 
 .clock, .nav-link {
   float: right;
@@ -52,7 +57,7 @@ body {
   margin-bottom: 20px;
 }
 
-#buttons-view {
+#buttons-view, #cities-view, #instructions {
   min-height: 100px;
   background-color: #a57548;
   opacity: .9;

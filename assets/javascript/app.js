@@ -55,11 +55,38 @@ function initMap() {
 
 
 var cuisineChoice;
+var zomatoCityID;
 
 $(document).ready(function () {
-    // Initial array of food choices
-    var cuisines = ["Mexican", "Italian", "Chinese", "Barbeque", "Wings", "Hamburgers", "Vegetarian", "American", "Thai", "Deli", "Greek", "Fast Food", "Pizza"];
+    // Initial array of food choices, along with Zomato ID
+    var cuisines = ["Mexican", "Italian", "Chinese", "BBQ", "Hamburgers", "Mediterranean", "Wings", "Thai", "Pizza"];
 
+    //Array of cities to choose from, along with Zomato ID
+    var dfwCities = [{
+        name: "Dallas",
+        cityID: "276",
+    }, {
+        name: "Arlington",
+        cityID: "10981",
+    }, {
+        name: "Fort Worth",
+        cityID: "10978",
+    }, {
+        name: "Plano",
+        cityID: "11003",
+    }, {
+        name: "Keller",
+        cityID: "10996",
+    }, {
+        name: "McKinney",
+        cityID: "11001",
+    }, {
+        name: "Denton",
+        cityID: "9244",
+    }, {
+        name: "Southlake",
+        cityID: "11010",
+    }];
     // Looping through the array of food cuisines
     for (var i = 0; i < cuisines.length; i++) {
 
@@ -70,10 +97,29 @@ $(document).ready(function () {
         cuisineButton.addClass("cuisine-btn");
         // Adding a data-attribute
         cuisineButton.attr("data-name", cuisines[i]);
+
         // Providing the initial button text
         cuisineButton.text(cuisines[i]);
         // Adding the button to the buttons-view div
         $("#buttons-view").append(cuisineButton);
+    }
+
+    //Looping through cities to create buttons
+    for (var j = 0; j < dfwCities.length; j++) {
+
+        // Then dynamically generates buttons for each cuisines in the array
+        // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
+        var cityButton = $("<button>");
+        // Adding a class of cuisine-btn to our button
+        cityButton.addClass("city-btn");
+        // Adding a data-attribute
+        cityButton.attr("data-name", dfwCities[j].name);
+        cityButton.attr("data-id", dfwCities[j].cityID);
+        console.log(dfwCities[j].name);
+        // Providing the initial button text
+        cityButton.text(dfwCities[j].name);
+        // Adding the button to the buttons-view div
+        $("#cities-view").append(cityButton);
     }
 
     //Adding moment.js to get clock at the top of the screen
@@ -96,8 +142,21 @@ $(document).ready(function () {
         // logs to console
         console.log("Cuisine choice: " + cuisineChoice);
 
-        displayRestaurants();
     })
+
+    //function to grab city id from zomato and store it in a var
+    $(".city-btn").on("click", function () {
+        for (var j = 0; j < dfwCities.length; j++) {
+
+            // Then dynamically generates buttons for each cuisines in the array
+            // zomatoCityID.attr("data-id", dfwCities[j].cityID);
+            // console.log(dfwCities[j].cityID);
+            zomatoCityID = $(this).attr("data-id");
+            displayRestaurants();
+        }
+
+    })
+
 
     // on submit
     $("#submit-button").on("click", function () {
@@ -123,63 +182,34 @@ function displayRestaurants() {
 
     //Zomato API key//
 
-var queryURL= "https://developers.zomato.com/api/v2.1/search?entity_id=10981&entity_type=city&q=chinese";
+    var queryURL = "https://developers.zomato.com/api/v2.1/search?entity_id=" + zomatoCityID + "&entity_type=city&q=" + cuisineChoice;
 
-$.ajax({
-  type: "GET",
-  headers: {"X-Zomato-API-Key": "281d1810ef0a4d12651256e7bd43fad2"},
-  url: queryURL,
-  success: function(response) {
+    $.ajax({
+        type: "GET",
+        headers: { "X-Zomato-API-Key": "281d1810ef0a4d12651256e7bd43fad2" },
+        url: queryURL,
+        success: function (response) {
 
-    var results = response.restaurants;
-    console.log(results);
+            var results = response.restaurants;
+            console.log(results);
 
-      for (var i = 0; i < results.length; i++) {
-          var restaurantAddress = $(".item");
-          var location = results[i].restaurant.location.address;
+            for (var i = 0; i < results.length; i++) {
+                var restaurantAddress = $(".item");
+                var location = results[i].restaurant.location.address;
 
-//     var queryURL = "https://developers.zomato.com/api/v2.1/categories";
-//     // var userKey = '281d1810ef0a4d12651256e7bd43fad2';
+                var restaurantNameforHTML = $(".item");
+                var restaurantName = results[i].restaurant.name;
 
-//     // var queryURL = userKey + "https://developers.zomato.com/api/v2.1/cuisines";
+                console.log(location);
+                var pOne = $("<p>").text("Restaurant Location: " + location);
+                restaurantAddress.prepend(pOne);
 
-//     // //Performing GET response to get Zomato cuisines in a particular city. 
+                var pTwo = $("<p>").text("Restaurant Name: " + restaurantName);
+                restaurantNameforHTML.prepend(pTwo);
 
-//     $.ajax({
-//         type: "POST",
-//         beforeSend: function (request) {
-//             request.setRequestHeader("user-key", '281d1810ef0a4d12651256e7bd43fad2');
-//         },
-//         url: queryURL,
-//         success: function (response) {
-//             console.log(response)
-//             //test to see if the restuarants populate or if it's a hot mess//
-
-//             //if it consoles correctly, then use the code below to populate in the div
-//             //$("#go-out").text(JSON.stringify(response));
-//         }
-//     });
-
-//     // $.ajax({
-
-//     //   url: queryURL + "set cuisines=10" + "city_id",
-//     //   method: "GET"
-//     //   }).then(function(response) {
-
-//     //       //test to see if the restuarants populate or if it's a hot mess//
-//     //       console.log(response);
-
-//     //       //if it consoles correctly, then use the code below to populate in the div
-//     //       //$("#go-out").text(JSON.stringify(response));
-//     //   });
-//     // }
-
-    console.log(location);
-    var pOne = $("<p>").text("Restaurant Location: " + location);
-    restaurantAddress.prepend(pOne);
-      }
-     }
-});
+            }
+        }
+    });
 
     // yummly API call
 
@@ -189,7 +219,7 @@ $.ajax({
     // var yummlyQueryURL = "https://api.yummly.com/v1/api/recipes?_app_id=" + yummlyAppID + "&_app_key=" + yummlyAPIkey + "&q=" + cuisineChoice;
     var yummlyQueryURL = "https://api.yummly.com/v1/api/recipes?_app_id=" + yummlyAppID + "&_app_key=" + yummlyAPIkey + "&q=" + cuisineChoice + "&allowedCuisine[]=cuisine^cuisine-" + cuisineChoice;
 
-    
+
 
     $.ajax({
         url: yummlyQueryURL,
@@ -199,7 +229,7 @@ $.ajax({
             console.log(response);
             // // create a table with links and photos\
 
-            var yummlyResults = response.matches; 
+            var yummlyResults = response.matches;
 
             for (var i = 0; i < yummlyResults.length; i++) {
 
