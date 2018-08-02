@@ -28,7 +28,7 @@ a {
 
 }
 
-.clock {
+.clock, .nav-link {
   float: right;
   background:#382718;
   color:  #F9D5AC;
