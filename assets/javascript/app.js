@@ -1,4 +1,13 @@
 
+//Hamburger in nav menu
+// Look for .hamburger
+var hamburger = document.querySelector(".hamburger--spring-r");
+// On click
+hamburger.addEventListener("click", function() {
+  // Toggle class "is-active"
+  hamburger.classList.toggle("is-active");
+  // Do something else, like open/close menu
+  
 var cuisineChoice;
 var zomatoCityID;
 
@@ -116,6 +125,11 @@ function resetResults() {
 })
 
 
+$("#reset-button").on("click", function () {
+    // clears value from button
+$("#go-out").trigger("reset");
+});
+
 
 
 function displayRestaurants() {
@@ -205,4 +219,15 @@ function displayRecipes() {
 
 
     
+
+
+*/
+//Shay TODO: make reset button
+//make the reset button in html
+//when that button is clicked
+//clear out the data in the go-out div
+
+//clear out the search results when more than one button is clicked
+//
+//
 
