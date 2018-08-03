@@ -123,6 +123,13 @@ button:hover {
   padding-left: 15px;
 }
 
+
+/*image resized*/
+
+img {
+  width:100px;
+  height:100px;
+
 .restaurants:first-child {
   margin-top: 0px;
 }
