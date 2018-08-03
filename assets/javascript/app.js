@@ -163,6 +163,9 @@ function displayRestaurants() {
 
 // yummly API call
 
+
+// yummly API call
+
 function displayRecipes() {
 
     var yummlyAPIkey = "d246cc7b49fa9a139f8dbcbac1a815c2";
@@ -199,4 +202,8 @@ function displayRecipes() {
         });
 
 };
+    
+
+
+    
 
