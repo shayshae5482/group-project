@@ -129,7 +129,7 @@ function displayRestaurants() {
 
     $.ajax({
         type: "GET",
-        headers: { "X-Zomato-API-Key": "281d1810ef0a4d12651256e7bd43fad2" },
+        headers: { "X-Zomato-API-Key": "dfd74805716eb9ecd34335e236792f0c" },
         url: queryURL,
         success: function (response) {
 
