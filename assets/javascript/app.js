@@ -141,6 +141,7 @@ $(document).ready(function () {
 
         // logs to console
         console.log("Cuisine choice: " + cuisineChoice);
+        $("#stay-in-body").empty();
 
     })
 
@@ -154,6 +155,7 @@ $(document).ready(function () {
             zomatoCityID = $(this).attr("data-id");
             displayRestaurants();
         }
+        displayRecipes();
 
     })
 
@@ -211,6 +213,10 @@ function displayRestaurants() {
         }
     });
 
+};
+
+
+function displayRecipes() {
     // yummly API call
 
     var yummlyAPIkey = "d246cc7b49fa9a139f8dbcbac1a815c2";
@@ -231,19 +237,29 @@ function displayRestaurants() {
 
             var yummlyResults = response.matches;
 
-            for (var i = 0; i < yummlyResults.length; i++) {
+            for (var i = 0; i < 9; i++) {
 
-                // FORMAT FOR YUMMLY ELEMENTS
-                console.log("Recipe: " + yummlyResults[i].recipeName);
-                console.log("Source: " + yummlyResults[i].sourceDisplayName);
-                console.log("Link: " + "https://www.yummly.com/recipe/" + yummlyResults[i].id);
-                console.log("Thumbnail: " + yummlyResults[i].smallImageUrls[0]);
+                    var newRow = $("<tr>").append(
+                        $("<td>").html("<a href='https://www.yummly.com/recipe/" + yummlyResults[i].id + "'>" + yummlyResults[i].recipeName + "</a>"),
+                        $("<td>").text(yummlyResults[i].sourceDisplayName),
+                        $("<td>").html("<img src='" + yummlyResults[i].smallImageUrls[0] + "'>"),
+                        $("</tr>")
+                    );
+
+                    $("#stay-in-tbody").append(newRow);
+
+                    // FORMAT FOR YUMMLY ELEMENTS
+                    
+                    console.log("Recipe: " + yummlyResults[i].recipeName);
+                    console.log("Source: " + yummlyResults[i].sourceDisplayName);
+                    console.log("Link: " + "https://www.yummly.com/recipe/" + yummlyResults[i].id);
+                    console.log("Thumbnail: " + yummlyResults[i].smallImageUrls[0]);
+                    console.log("Rating: " + yummlyResults[i].rating);
+            
             };
 
-
-
         });
-};
+}
 
 /* Notes on yummly api
 
