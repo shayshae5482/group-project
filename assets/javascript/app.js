@@ -114,6 +114,11 @@ $(document).ready(function () {
 })
 
 
+$("#reset-button").on("click", function () {
+    // clears value from button
+$("#go-out").trigger("reset");
+});
+
 
 
 function displayRestaurants() {
@@ -230,3 +235,11 @@ Link to recipe:
 https://www.yummly.com/recipe/ + matches[0].id
 
 */
+//Shay TODO: make reset button
+//make the reset button in html
+//when that button is clicked
+//clear out the data in the go-out div
+
+//clear out the search results when more than one button is clicked
+//
+//
