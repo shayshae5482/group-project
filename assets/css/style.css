@@ -19,6 +19,9 @@ a {
   font-weight: bold;
  }
  
+a:hover {
+  color: #382718;
+}
 
 .navbar-brand {
   background-color: #382718;
@@ -113,6 +116,7 @@ button:hover {
   padding: 10px;
   padding-left: 15px;
 }
+
 
 
 /*I made this a sticky footer...feel free to "unstick"*/

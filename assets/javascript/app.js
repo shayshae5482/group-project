@@ -108,7 +108,7 @@ $(document).ready(function () {
             zomatoCityID = $(this).attr("data-id");
 
         }
-
+        $('.item').empty();
         displayRestaurants();
     })
 
