@@ -84,8 +84,9 @@ $(document).ready(function () {
 
         // logs to console
         console.log("Cuisine choice: " + cuisineChoice);
-        $("#stay-in-body").empty();
+        $("#stay-in-tbody").empty();
 
+        displayRecipes();
     })
 
     //function to grab city id from zomato and store it in a var
@@ -100,7 +101,6 @@ $(document).ready(function () {
         }
 
         displayRestaurants();
-        displayRecipes();
     })
 
 function resetResults() {
@@ -188,7 +188,6 @@ function displayRecipes() {
                     $("<td>").html("<a href='https://www.yummly.com/recipe/" + yummlyResults[i].id + "'>" + yummlyResults[i].recipeName + "</a>"),
                     $("<td>").text(yummlyResults[i].sourceDisplayName),
                     $("<td>").html("<img src='" + yummlyResults[i].smallImageUrls[0] + "'>"),
-                    $("</tr>")
                 );
 
                 $("#stay-in-tbody").append(newRow);
