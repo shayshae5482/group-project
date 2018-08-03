@@ -114,6 +114,12 @@ button:hover {
   padding-left: 15px;
 }
 
+/*image resized*/
+
+img {
+  width:100px;
+  height:100px;
+}
 
 /*I made this a sticky footer...feel free to "unstick"*/
 .footer {
