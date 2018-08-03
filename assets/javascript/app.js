@@ -59,7 +59,7 @@ var zomatoCityID;
 
 $(document).ready(function () {
     // Initial array of food choices, along with Zomato ID
-    var cuisines = ["Mexican", "Italian", "Chinese", "BBQ", "Hamburgers", "Mediterranean", "Wings", "Thai", "Pizza"];
+    var cuisines = ["Mexican", "Italian", "Chinese", "BBQ", "Hamburgers", "Mediterranean", "Wings", "Thai", "Pizza", "Japanese", "Chicken", "Deli", "Vietnamese", "Hamburger"];
 
     //Array of cities to choose from, along with Zomato ID
     var dfwCities = [{
@@ -192,8 +192,10 @@ function displayRestaurants() {
 
             var results = response.restaurants;
             console.log(results);
-
+            
+            
             for (var i = 0; i < results.length; i++) {
+                               
                 var restaurantAddress = $(".item");
                 var location = results[i].restaurant.location.address;
 
@@ -201,10 +203,10 @@ function displayRestaurants() {
                 var restaurantName = results[i].restaurant.name;
 
                 console.log(location);
-                var pOne = $("<p>").text("Restaurant Location: " + location);
+                var pOne = $("<a href='map.html'>").text(location);
                 restaurantAddress.prepend(pOne);
 
-                var pTwo = $("<p>").text("Restaurant Name: " + restaurantName);
+                var pTwo = $("<h3>").text("Restaurant: " + restaurantName);
                 restaurantNameforHTML.prepend(pTwo);
 
             }
