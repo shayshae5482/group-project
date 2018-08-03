@@ -75,9 +75,6 @@ $(document).ready(function () {
         name: "Plano",
         cityID: "11003",
     }, {
-        name: "Keller",
-        cityID: "10996",
-    }, {
         name: "McKinney",
         cityID: "11001",
     }, {
@@ -153,23 +150,20 @@ $(document).ready(function () {
             // zomatoCityID.attr("data-id", dfwCities[j].cityID);
             // console.log(dfwCities[j].cityID);
             zomatoCityID = $(this).attr("data-id");
-            displayRestaurants();
+          
         }
-        displayRecipes();
 
+        displayRestaurants();
+        displayRecipes();
     })
 
-
+function resetResults() {
+    $('.item').empty();
+  
+}
     // on submit
     $("#submit-button").on("click", function () {
-        event.preventDefault();
-        // grabs input value
-        // stores in varaible
-        var userLocation = $("#location-input").val().trim()
-
-        // logs to console
-        console.log("Location: " + userLocation);
-
+       resetResults()
     })
 
 })
@@ -196,8 +190,9 @@ function displayRestaurants() {
             console.log(results);
             
             
-            for (var i = 0; i < results.length; i++) {
-                               
+
+            for (var i = 0; i < 10; i++) {
+                              
                 var restaurantAddress = $(".item");
                 var location = results[i].restaurant.location.address;
 
@@ -215,10 +210,10 @@ function displayRestaurants() {
         }
     });
 
+
 };
 
 
-function displayRecipes() {
     // yummly API call
 
     var yummlyAPIkey = "d246cc7b49fa9a139f8dbcbac1a815c2";
