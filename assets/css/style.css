@@ -33,6 +33,12 @@ h2 {
   color: #58391e;
 }
 
+h3 {
+  font-weight: bold;
+  font-size: 20px;
+  color: #2B1D16;
+}
+
 .clock, .nav-link {
   float: right;
   background:#382718;
