@@ -59,7 +59,7 @@ var zomatoCityID;
 
 $(document).ready(function () {
     // Initial array of food choices, along with Zomato ID
-    var cuisines = ["Mexican", "Italian", "Chinese", "BBQ", "Hamburgers", "Mediterranean", "Wings", "Thai", "Pizza", "Japanese", "Chicken", "Deli", "Vietnamese", "Hamburger"];
+    var cuisines = ["Mexican", "Italian", "Chinese", "BBQ", "Cajun", "Mediterranean", "Wings", "Thai", "Pizza", "Japanese", "Chicken", "Deli", "Vietnamese", "Hamburger"];
 
     //Array of cities to choose from, along with Zomato ID
     var dfwCities = [{
@@ -159,7 +159,8 @@ $(document).ready(function () {
 
 function resetResults() {
     $('.item').empty();
-  
+    $("#stay-in-tbody").empty();
+    
 }
     // on submit
     $("#submit-button").on("click", function () {
@@ -256,7 +257,7 @@ function displayRestaurants() {
             };
 
         });
-}
+
 
 /* Notes on yummly api
 
