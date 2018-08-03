@@ -61,6 +61,8 @@ body {
   overflow-y: scroll;
 }
 
+
+
 .content {
   flex: 1 0 auto;
 }
@@ -121,7 +123,13 @@ button:hover {
   padding-left: 15px;
 }
 
+.restaurants:first-child {
+  margin-top: 0px;
+}
 
+.restaurants {
+  margin-top: 25px;
+}
 
 /*I made this a sticky footer...feel free to "unstick"*/
 .footer {
@@ -142,4 +150,4 @@ button:hover {
   font-size: 20px;
   letter-spacing: 1px;
 }
-}
+

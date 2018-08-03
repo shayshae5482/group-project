@@ -163,9 +163,12 @@ function displayRestaurants() {
                 console.log(location);
                 var pOne = $("<a href='map.html'>").text(location);
                 restaurantAddress.prepend(pOne);
+                pOne.addClass("restaurants-location");
+
 
                 var pTwo = $("<h3>").text("Restaurant: " + restaurantName);
                 restaurantNameforHTML.prepend(pTwo);
+                pTwo.addClass("restaurants");
 
             }
         }
