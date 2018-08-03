@@ -7,7 +7,7 @@ hamburger.addEventListener("click", function() {
   // Toggle class "is-active"
   hamburger.classList.toggle("is-active");
   // Do something else, like open/close menu
-  
+});
 var cuisineChoice;
 var zomatoCityID;
 
@@ -219,15 +219,4 @@ function displayRecipes() {
 
 
     
-
-
-*/
-//Shay TODO: make reset button
-//make the reset button in html
-//when that button is clicked
-//clear out the data in the go-out div
-
-//clear out the search results when more than one button is clicked
-//
-//
 
