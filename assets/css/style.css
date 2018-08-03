@@ -9,6 +9,10 @@ body {
   letter-spacing: 1.5px;
 }
 
+.hamburger--spring-r {
+  background-color: #F9D5AC;
+}
+
 .navbar {
   background-color: #382718;
   font-family: "Homemade Apple", cursive;
@@ -139,4 +143,11 @@ button:hover {
   left:0;            
   width: 100%;
   color: #F9D5AC;
+}
+
+@media screen and (max-width:640px) {
+.navbar-brand {
+  font-size: 20px;
+  letter-spacing: 1px;
+}
 }
