@@ -59,6 +59,7 @@ var zomatoCityID;
 
 $(document).ready(function () {
     // Initial array of food choices, along with Zomato ID
+
     var cuisines = ["Mexican", "Italian", "Chinese", "BBQ", "Hamburgers", "Mediterranean", "Wings", "Thai", "Pizza", "Japanese", "Chicken", "Deli", "Vietnamese"];
 
     //Array of cities to choose from, along with Zomato ID
@@ -157,10 +158,11 @@ $(document).ready(function () {
         displayRecipes();
     })
 
-    function resetResults() {
-        $('.item').empty();
-
-    }
+function resetResults() {
+    $('.item').empty();
+    $("#stay-in-tbody").empty();
+    
+}
     // on submit
     $("#submit-button").on("click", function () {
         resetResults()
@@ -236,6 +238,7 @@ function displayRecipes() {
             var yummlyResults = response.matches;
 
             for (var i = 0; i < 9; i++) {
+
 
                 var newRow = $("<tr>").append(
                     $("<td>").html("<a href='https://www.yummly.com/recipe/" + yummlyResults[i].id + "'>" + yummlyResults[i].recipeName + "</a>"),
