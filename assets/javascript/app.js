@@ -1,57 +1,3 @@
-function initMap() {
-    var map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: 36.7970, lng: -95.7767 },
-        zoom: 4,
-    });
-
-    var input = document.getElementById('pac-input');
-
-    var autocomplete = new google.maps.places.Autocomplete(
-        input, { placeIdOnly: true });
-    autocomplete.bindTo('bounds', map);
-
-    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-    var infowindow = new google.maps.InfoWindow();
-    var infowindowContent = document.getElementById('infowindow-content');
-    infowindow.setContent(infowindowContent);
-    var geocoder = new google.maps.Geocoder;
-    var marker = new google.maps.Marker({
-        map: map
-    });
-    marker.addListener('click', function () {
-        infowindow.open(map, marker);
-    });
-
-    autocomplete.addListener('place_changed', function () {
-        infowindow.close();
-        var place = autocomplete.getPlace();
-
-        if (!place.place_id) {
-            return;
-        }
-        geocoder.geocode({ 'placeId': place.place_id }, function (results, status) {
-
-            if (status !== 'OK') {
-                window.alert('Geocoder failed due to: ' + status);
-                return;
-            }
-            map.setZoom(11);
-            map.setCenter(results[0].geometry.location);
-            // Set the position of the marker using the place ID and location.
-            marker.setPlace({
-                placeId: place.place_id,
-                location: results[0].geometry.location
-            });
-            marker.setVisible(true);
-            infowindowContent.children['place-name'].textContent = place.name;
-            infowindowContent.children['place-id'].textContent = place.place_id;
-            infowindowContent.children['place-address'].textContent =
-                results[0].formatted_address;
-            infowindow.open(map, marker);
-        });
-    });
-}
 
 //Hamburger in nav menu
 // Look for .hamburger
@@ -62,14 +8,13 @@ hamburger.addEventListener("click", function() {
   hamburger.classList.toggle("is-active");
   // Do something else, like open/close menu
   
-});
-
 var cuisineChoice;
 var zomatoCityID;
 
 $(document).ready(function () {
     // Initial array of food choices, along with Zomato ID
-    var cuisines = ["Mexican", "Italian", "Chinese", "BBQ", "Hamburgers", "Mediterranean", "Wings", "Thai", "Pizza", "Japanese", "Chicken", "Deli", "Vietnamese", "Hamburger"];
+
+    var cuisines = ["Mexican", "Italian", "Chinese", "BBQ", "Hamburgers", "Mediterranean", "Wings", "Thai", "Pizza", "Japanese", "Chicken", "Deli", "Vietnamese"];
 
     //Array of cities to choose from, along with Zomato ID
     var dfwCities = [{
@@ -84,9 +29,6 @@ $(document).ready(function () {
     }, {
         name: "Plano",
         cityID: "11003",
-    }, {
-        name: "Keller",
-        cityID: "10996",
     }, {
         name: "McKinney",
         cityID: "11001",
@@ -151,7 +93,9 @@ $(document).ready(function () {
 
         // logs to console
         console.log("Cuisine choice: " + cuisineChoice);
+        $("#stay-in-tbody").empty();
 
+        displayRecipes();
     })
 
     //function to grab city id from zomato and store it in a var
@@ -162,22 +106,20 @@ $(document).ready(function () {
             // zomatoCityID.attr("data-id", dfwCities[j].cityID);
             // console.log(dfwCities[j].cityID);
             zomatoCityID = $(this).attr("data-id");
-            displayRestaurants();
+
         }
 
+        displayRestaurants();
     })
 
-
+function resetResults() {
+    $('.item').empty();
+    $("#stay-in-tbody").empty();
+    
+}
     // on submit
     $("#submit-button").on("click", function () {
-        event.preventDefault();
-        // grabs input value
-        // stores in varaible
-        var userLocation = $("#location-input").val().trim()
-
-        // logs to console
-        console.log("Location: " + userLocation);
-
+        resetResults()
     })
 
 })
@@ -201,16 +143,17 @@ function displayRestaurants() {
 
     $.ajax({
         type: "GET",
-        headers: { "X-Zomato-API-Key": "281d1810ef0a4d12651256e7bd43fad2" },
+        headers: { "X-Zomato-API-Key": "dfd74805716eb9ecd34335e236792f0c" },
         url: queryURL,
         success: function (response) {
 
             var results = response.restaurants;
             console.log(results);
-            
-            
-            for (var i = 0; i < results.length; i++) {
-                               
+
+
+
+            for (var i = 0; i < 10; i++) {
+
                 var restaurantAddress = $(".item");
                 var location = results[i].restaurant.location.address;
 
@@ -228,14 +171,22 @@ function displayRestaurants() {
         }
     });
 
-    // yummly API call
+
+};
+
+
+// yummly API call
+
+
+// yummly API call
+
+function displayRecipes() {
 
     var yummlyAPIkey = "d246cc7b49fa9a139f8dbcbac1a815c2";
     var yummlyAppID = "3fce4689";
 
     // var yummlyQueryURL = "https://api.yummly.com/v1/api/recipes?_app_id=" + yummlyAppID + "&_app_key=" + yummlyAPIkey + "&q=" + cuisineChoice;
     var yummlyQueryURL = "https://api.yummly.com/v1/api/recipes?_app_id=" + yummlyAppID + "&_app_key=" + yummlyAPIkey + "&q=" + cuisineChoice + "&allowedCuisine[]=cuisine^cuisine-" + cuisineChoice;
-
 
 
     $.ajax({
@@ -248,33 +199,27 @@ function displayRestaurants() {
 
             var yummlyResults = response.matches;
 
-            for (var i = 0; i < yummlyResults.length; i++) {
+            for (var i = 0; i < 9; i++) {
 
-                // FORMAT FOR YUMMLY ELEMENTS
-                console.log("Recipe: " + yummlyResults[i].recipeName);
-                console.log("Source: " + yummlyResults[i].sourceDisplayName);
-                console.log("Link: " + "https://www.yummly.com/recipe/" + yummlyResults[i].id);
-                console.log("Thumbnail: " + yummlyResults[i].smallImageUrls[0]);
+                var newRow = $("<tr>").append(
+                    $("<td>").html("<a href='https://www.yummly.com/recipe/" + yummlyResults[i].id + "'>" + yummlyResults[i].recipeName + "</a>"),
+                    $("<td>").text(yummlyResults[i].sourceDisplayName),
+                    $("<td>").html("<img src='" + yummlyResults[i].smallImageUrls[0] + "'>"),
+                );
+
+                $("#stay-in-tbody").append(newRow);
+
+
             };
 
-
-
         });
+
 };
+    
 
-/* Notes on yummly api
 
-How to get to recipeName:
-response.matches[i].recipeName
+    
 
-Big image?
-response.matches[i].imageUrlsBySize.90
-
-Thumbnail
-response.matches[i].smallImageUrls[0]
-
-Link to recipe:
-https://www.yummly.com/recipe/ + matches[0].id
 
 */
 //Shay TODO: make reset button
@@ -285,3 +230,4 @@ https://www.yummly.com/recipe/ + matches[0].id
 //clear out the search results when more than one button is clicked
 //
 //
+

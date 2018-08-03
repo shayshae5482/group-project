@@ -1,79 +1,228 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <title>Place ID Geocoder</title>
+  <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Place ID Geocoder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-</head>
+    <!-- Reset -->
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/reset.css" />
+
+    <!--Linking Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+
+    <!--Linking google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz|Homemade+Apple" rel="stylesheet">
+
+    <!--Linking jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Moment JS -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <span class="navbar-brand">What's for dinner, DFW?</span>
+                <div id="clock" class="clock">loading ...</div>
+            </div>
+        </nav>
+    </header>
+
     <style>
-        /* Always set the map height explicitly to define the size of the div
+      /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #right-panel {
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
 
-        #map {
-            height: 100%;
-        }
+      #right-panel select, #right-panel input {
+        font-size: 15px;
+      }
 
-        /* Optional: Makes the sample page fill the window. */
+      #right-panel select {
+        width: 100%;
+      }
 
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
+      #right-panel i {
+        font-size: 12px;
+      }
+      #right-panel {
+        font-family: Arial, Helvetica, sans-serif;
+        position: absolute;
+        right: 5px;
+        top: 60%;
+        margin-top: -195px;
+        height: 330px;
+        width: 200px;
+        padding: 5px;
+        z-index: 5;
+        border: 1px solid #999;
+        background: #fff;
+      }
+      h2 {
+        font-size: 22px;
+        margin: 0 0 5px 0;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        height: 271px;
+        width: 200px;
+        overflow-y: scroll;
+      }
+      li {
+        background-color: #f1f1f1;
+        padding: 10px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+      li:nth-child(odd) {
+        background-color: #fcfcfc;
+      }
+      #more {
+        width: 100%;
+        margin: 5px 0 0 0;
+      }
 
         .controls {
-            background-color: #fff;
-            border-radius: 2px;
-            border: 1px solid transparent;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-            box-sizing: border-box;
-            font-family: Roboto;
-            font-size: 15px;
-            font-weight: 300;
-            height: 29px;
-            margin-left: 17px;
-            margin-top: 10px;
-            outline: none;
-            padding: 0 11px 0 13px;
-            text-overflow: ellipsis;
-            width: 400px;
-        }
+        background-color: #fff;
+        border-radius: 2px;
+        border: 1px solid transparent;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        box-sizing: border-box;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        height: 29px;
+        margin-left: 17px;
+        margin-top: 10px;
+        outline: none;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 400px;
+    }
 
-        .controls:focus {
-            border-color: #4d90fe;
-        }
+    .controls:focus {
+        border-color: #4d90fe;
+    }
 
-        .title {
-            font-weight: bold;
-        }
+    .title {
+        font-weight: bold;
+    }
 
-        .address {
-            font-weight: bold;
-        }
+    .address {
+        font-weight: bold;
+    }
 
-        #infowindow-content {
-            display: none;
-        }
+    #infowindow-content {
+        display: none;
+    }
 
-        #map #infowindow-content {
-            display: inline;
-        }
+    #map #infowindow-content {
+        display: inline;
+    }
+      
     </style>
+    <script>
+      // This example requires the Places library. Include the libraries=places
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
+      var map;
 
-<body>
-    <input id="pac-input" class="controls" type="text" placeholder="Enter a location">
+      function initMap() {
+        // Create the map.
+        var pyrmont = {lat: 31.866, lng: -96.196};
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: pyrmont,
+          zoom: 6
+        });
+
+        // Create the places service.
+        var service = new google.maps.places.PlacesService(map);
+        var getNextPage = null;
+        var moreButton = document.getElementById('more');
+        moreButton.onclick = function() {
+          moreButton.disabled = true;
+          if (getNextPage) getNextPage();
+        };
+
+        // Perform a nearby search.
+        service.nearbySearch(
+            {location: dfwCities, radius: 500, type: ['food']},
+            function(results, status, pagination) {
+              if (status !== 'OK') return;
+
+              createMarkers(results);
+              moreButton.disabled = !pagination.hasNextPage;
+              getNextPage = pagination.hasNextPage && function() {
+                pagination.nextPage();
+              };
+            });
+      }
+
+      function createMarkers(places) {
+        var bounds = new google.maps.LatLngBounds();
+        var placesList = document.getElementById('places');
+
+        for (var i = 0, place; place = places[i]; i++) {
+          var image = {
+            url: place.icon,
+            size: new google.maps.Size(71, 71),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(17, 34),
+            scaledSize: new google.maps.Size(25, 25)
+          };
+
+          var marker = new google.maps.Marker({
+            map: map,
+            icon: image,
+            title: place.name,
+            position: place.geometry.location
+          });
+
+          var li = document.createElement('li');
+          li.textContent = place.name;
+          placesList.appendChild(li);
+
+          bounds.extend(place.geometry.location);
+        }
+        map.fitBounds(bounds);
+      }
+    </script>
+  </head>
+  <body>
     <div id="map"></div>
-    <div id="infowindow-content">
-        <span id="place-name" class="title"></span>
-        <br><br>
-        <span id="place-address" class="address"></span>
+    <div id="right-panel">
+      <h2>Results</h2>
+      <ul id="places"></ul>
+      <button id="more">More results</button>
     </div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzU5XUoyGzYtq3mVaTpkkcGRm8wu6AyUU&libraries=places&callback=initMap"
-        async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzU5XUoyGzYtq3mVaTpkkcGRm8wu6AyUU&libraries=places&callback=initMap" async defer></script>
+  
+
 
     <script src="assets/javascript/app.js"></script>
 </body>
