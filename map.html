@@ -163,90 +163,47 @@
     }
 
     #map #infowindow-content {
-      <<<<<<< HEAD display: inline;
+        display: inline;
     }
-  </style>
-  <script>
-    // This example requires the Places library. Include the libraries=places
-    // parameter when you first load the API. For example:
-    // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+      
+    </style>
+    <script>
+      // This example requires the Places library. Include the libraries=places
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
-    var map;
+      var map;
 
-    function initMap() {
-      // Create the map.
-      var dallas = { lat: 31.866, lng: -96.196 };
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: dallas,
-        zoom: 6
-      });
-
-      // file:///Users/calebreed/Documents/HOMEWORK/group-project/map.html?address=2950%20Craig%20Drive,%20Suite%20304,%20McKinney%2075070
-      var parsedUrl = new URL(window.location.href);
-      console.log(parsedUrl.searchParams.get("address")); // address=2950%20Craig%20Drive,%20Suite%20304,%20McKinney%2075070
-    }
-  </script>
-</head>
-
-<body>
-  <div id="map"></div>
-  <div id="right-panel">
-    <h2>Results</h2>
-    <ul id="places"></ul>
-    <button id="more">More results</button>
-  </div>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzU5XUoyGzYtq3mVaTpkkcGRm8wu6AyUU&libraries=places&callback=initMap"
-    async defer></script>
+      function initMap() {
+        // Create the map.
+        var dallas = {lat: 31.866, lng: -96.196};
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: dallas,
+          zoom: 6
+        });
 
 
 
-  <script src="assets/javascript/app.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script> ======= display: inline; }
-  </style>
-  <script>
-    // This example requires the Places library. Include the libraries=places
-    // parameter when you first load the API. For example:
-    // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-    var hamburger = document.querySelector(".hamburger--spring-r");
-    // On click
-    hamburger.addEventListener("click", function () {
-      // Toggle class "is-active"
-      hamburger.classList.toggle("is-active");
-      // Do something else, like open/close menu
-    });
-    var map;
 
-    function initMap() {
-      // Create the map.
-      var dallas = { lat: 31.866, lng: -96.196 };
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: dallas,
-        zoom: 6
-      });
+// file:///Users/calebreed/Documents/HOMEWORK/group-project/map.html?address=2950%20Craig%20Drive,%20Suite%20304,%20McKinney%2075070
+var parsedUrl = new URL(window.location.href);
+console.log(parsedUrl.searchParams.get("address")); // address=2950%20Craig%20Drive,%20Suite%20304,%20McKinney%2075070
+var input = document.getElementById('address');
+}
+    </script>
 
-      // file:///Users/calebreed/Documents/HOMEWORK/group-project/map.html?address=2950%20Craig%20Drive,%20Suite%20304,%20McKinney%2075070
-      var parsedUrl = new URL(window.location.href);
-      console.log(parsedUrl.searchParams.get("address")); // address=2950%20Craig%20Drive,%20Suite%20304,%20McKinney%2075070
-    }
-  </script>
   </head>
 
   <body>
     <div id="map"></div>
     <div id="right-panel">
       <h2>Results</h2>
-      <ul id="places"></ul>
+      <ul id="results"></ul>
       <button id="more">More results</button>
     </div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzU5XUoyGzYtq3mVaTpkkcGRm8wu6AyUU&libraries=places&callback=initMap"
-      async defer></script>
-
-
-
-    <script src="assets/javascript/app.js"></script> >>>>>>> 9f0f0cf548e47e2318ae956a7eeec4f574f5b8ef
-  </body>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzU5XUoyGzYtq3mVaTpkkcGRm8wu6AyUU&libraries=places&callback=initMap" async defer></script>    
+  <script src="assets/javascript/app.js"></script>
+</body>
+  
 
 </html>
