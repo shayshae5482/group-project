@@ -161,7 +161,7 @@ function displayRestaurants() {
                 var restaurantName = results[i].restaurant.name;
 
                 console.log(location);
-                var pOne = $("<a href='map.html'>").text(location);
+                var pOne = $("<a href='map.html?address=" + results[i].restaurant.location.address + "'>").text(location);
                 restaurantAddress.prepend(pOne);
                 pOne.addClass("restaurants-location");
 
