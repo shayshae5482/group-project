@@ -12,6 +12,7 @@ var cuisineChoice;
 var zomatoCityID;
 
 $(document).ready(function () {
+    $(".attribution").hide();
     // Initial array of food choices, along with Zomato ID
 
     var cuisines = ["Mexican", "Italian", "Chinese", "BBQ", "Hamburgers", "Mediterranean", "Wings", "Thai", "Pizza", "Japanese", "Chicken", "Deli", "Vietnamese"];
@@ -96,6 +97,11 @@ $(document).ready(function () {
         $("#stay-in-tbody").empty();
 
         displayRecipes();
+        $(".attribution").show();
+
+
+        $('.item').empty();
+        displayRestaurants();
     })
 
     //function to grab city id from zomato and store it in a var

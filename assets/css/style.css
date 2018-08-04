@@ -7,6 +7,7 @@ body {
   background-size: cover;
   font-family: 'Yanone Kaffeesatz', sans-serif;
   letter-spacing: 1.5px;
+  min-height: 1500px;
 }
 
 .hamburger--spring-r {
@@ -117,10 +118,11 @@ button:hover {
   background-color: #a57548;
   opacity: .9;
   color: #382718;
-  min-height: 400px;
+  min-height: 900px;
   margin-bottom: 100px;
   padding: 10px;
   padding-left: 15px;
+  position: relative;
 }
 
 
@@ -152,6 +154,7 @@ button:hover {
   width: 100%;
   color: #F9D5AC;
 }
+
 
 @media screen and (max-width:640px) {
 .navbar-brand {
