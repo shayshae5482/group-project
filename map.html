@@ -187,12 +187,77 @@
 
 
 
-      // file:///Users/calebreed/Documents/HOMEWORK/group-project/map.html?address=2950%20Craig%20Drive,%20Suite%20304,%20McKinney%2075070
-      var parsedUrl = new URL(window.location.href);
-      console.log(parsedUrl.searchParams.get("address")); // address=2950%20Craig%20Drive,%20Suite%20304,%20McKinney%2075070
-      var input = document.getElementById('address');
+    #map #infowindow-content {
+      display: inline;
+    }
+  </style>
+  <script>
+    // This example requires the Places library. Include the libraries=places
+    // parameter when you first load the API. For example:
+    // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+
+    // file:///Users/calebreed/Documents/HOMEWORK/group-project/map.html?address=2950%20Craig%20Drive,%20Suite%20304,%20McKinney%2075070
+    var parsedUrl = new URL(window.location.href);
+    console.log(parsedUrl.searchParams.get("address")); // address=2950%20Craig%20Drive,%20Suite%20304,%20McKinney%2075070
+
+    var map;
+    var address = parsedUrl.searchParams.get("address")
+    function initMap() {
+      geocoder = new google.maps.Geocoder();
+      // Create the map.
+      var dallas = { lat: 31.866, lng: -96.196 };
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: dallas,
+        zoom: 6
+      });
+      
+
+       if (geocoder) {
+    geocoder.geocode({
+      'address': address
+    }, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        if (status != google.maps.GeocoderStatus.ZERO_RESULTS) {
+          map.setCenter(results[0].geometry.location);
+
+          var infowindow = new google.maps.InfoWindow({
+            content: '<b>' + address + '</b>',
+            size: new google.maps.Size(150, 50)
+          });
+
+          var marker = new google.maps.Marker({
+            position: results[0].geometry.location,
+            map: map,
+            title: address
+          });
+          google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map, marker);
+          });
+
+        } else {
+          alert("No results found");
+        }
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
+  }
+      var marker = new google.maps.Marker({
+        position: results[0].geometry.location,
+        map: map,
+        title: address
+      });
+      google.maps.event.addListener(marker, 'click', function () {
+        infowindow.open(map, marker);
+      });
+
     }
   </script>
+
+</head>
+
+<body>
 
   <div id="map"></div>
   <div id="right-panel">
@@ -200,7 +265,7 @@
     <ul id="results"></ul>
     <button id="more">More results</button>
   </div>
-  
+
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzU5XUoyGzYtq3mVaTpkkcGRm8wu6AyUU&libraries=places&callback=initMap"
     async defer></script>
   <script src="assets/javascript/app.js"></script>
