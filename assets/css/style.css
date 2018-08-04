@@ -12,6 +12,27 @@ body {
 
 .hamburger--spring-r {
   background-color: #F9D5AC;
+  position: relative;
+  display: inline-block;
+}
+
+.tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  background-color: rgb(240, 221, 200);
+  color: #382718;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+
+  /* Position the hamburger */
+  position: absolute;
+  z-index: 1;
+}
+
+.hamburger--spring-r:hover .tooltiptext {
+  visibility: visible;
 }
 
 .navbar {
@@ -73,7 +94,7 @@ body {
   margin-bottom: 20px;
 }
 
-#buttons-view, #cities-view, #instructions {
+#buttons-view, #cities-view, #instructions, #alex-view, #caleb-view, #julie-view, #shay-view {
   min-height: 100px;
   background-color: #a57548;
   opacity: .9;
@@ -162,3 +183,4 @@ button:hover {
   letter-spacing: 1px;
 }
 
+}
