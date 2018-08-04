@@ -7,11 +7,54 @@ body {
   background-size: cover;
   font-family: 'Yanone Kaffeesatz', sans-serif;
   letter-spacing: 1.5px;
+  min-height: 1500px;
 }
 
-.hamburger--spring-r {
-  background-color: #F9D5AC;
+.btn {
+  padding: 3px;
+  font-size: 20px;
+  border-radius: 2px;
+  min-width: 100px;
+  color: #F9D5AC;
+  background-color: #382718;
+  border: 1px solid #382718;
+  letter-spacing: 1.5px;
 }
+
+button {
+  padding: 3px;
+  font-size: 20px;
+  border-radius: 2px;
+  min-width: 100px;
+  margin: 5px;
+  margin-left: 10px; 
+  color: #F9D5AC;
+  background-color: #382718;
+  border: 1px solid #382718;
+  letter-spacing: 1.5px;
+}
+
+.btn:hover,
+button:hover {
+  background-color: #BC956B;
+  border: solid 1px #C3AE03;
+}
+
+.dropdown-item:hover{
+  background-color: rgb(255, 229, 202);
+}
+
+#dropdownMenuLink{
+  background-color: #C3AE03;
+  color: #382718;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+.dropdown,
+.dropdown-menu {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
 
 .navbar {
   background-color: #382718;
@@ -72,7 +115,7 @@ body {
   margin-bottom: 20px;
 }
 
-#buttons-view, #cities-view, #instructions {
+#buttons-view, #cities-view, #instructions, #alex-view, #caleb-view, #julie-view, #shay-view {
   min-height: 100px;
   background-color: #a57548;
   opacity: .9;
@@ -92,24 +135,6 @@ body {
   margin-right: 0;
 }
 
-button {
-  padding: 3px;
-  font-size: 20px;
-  border-radius: 2px;
-  min-width: 100px;
-  margin: 5px;
-  margin-left: 10px; 
-  color: #F9D5AC;
-  background-color: #382718;
-  border: 1px solid #382718;
-  letter-spacing: 1.5px;
-}
-
-
-button:hover {
-  background-color: #BC956B;
-  border: solid 1px #C3AE03;
-}
 
 /* Shared styling for these divs */
 #go-out,
@@ -117,18 +142,20 @@ button:hover {
   background-color: #a57548;
   opacity: .9;
   color: #382718;
-  min-height: 400px;
+  min-height: 900px;
   margin-bottom: 100px;
   padding: 10px;
   padding-left: 15px;
+  position: relative;
 }
 
 
 /*image resized*/
 
-img {
+.profile-image {
   width:100px;
   height:100px;
+}
 
 .restaurants:first-child {
   margin-top: 0px;
@@ -146,11 +173,12 @@ img {
   height: 45px;
   line-height: 45px;
   position: fixed;   
-  bottom:0;          	
-  left:0;            
+  bottom: 0;          	
+  left: 0;            
   width: 100%;
   color: #F9D5AC;
 }
+
 
 @media screen and (max-width:640px) {
 .navbar-brand {
@@ -158,3 +186,4 @@ img {
   letter-spacing: 1px;
 }
 
+}
