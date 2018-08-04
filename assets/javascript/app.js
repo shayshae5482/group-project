@@ -10,7 +10,7 @@ $(document).ready(function () {
     //Array of cities to choose from, along with Zomato ID
     var dfwCities = [{
         name: "Allen",
-        cityID: "1204",
+        cityID: "10980",
     },{
         name: "Arlington",
         cityID: "10981",
