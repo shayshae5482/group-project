@@ -1,4 +1,13 @@
 
+//Hamburger in nav menu
+// Look for .hamburger
+var hamburger = document.querySelector(".hamburger--spring-r");
+// On click
+hamburger.addEventListener("click", function() {
+  // Toggle class "is-active"
+  hamburger.classList.toggle("is-active");
+  // Do something else, like open/close menu
+});
 var cuisineChoice;
 var zomatoCityID;
 
@@ -84,8 +93,9 @@ $(document).ready(function () {
 
         // logs to console
         console.log("Cuisine choice: " + cuisineChoice);
-        $("#stay-in-body").empty();
+        $("#stay-in-tbody").empty();
 
+        displayRecipes();
     })
 
     //function to grab city id from zomato and store it in a var
@@ -98,9 +108,8 @@ $(document).ready(function () {
             zomatoCityID = $(this).attr("data-id");
 
         }
-
+        $('.item').empty();
         displayRestaurants();
-        displayRecipes();
     })
 
 function resetResults() {
@@ -115,6 +124,11 @@ function resetResults() {
 
 })
 
+
+$("#reset-button").on("click", function () {
+    // clears value from button
+$("#go-out").trigger("reset");
+});
 
 
 
@@ -149,9 +163,12 @@ function displayRestaurants() {
                 console.log(location);
                 var pOne = $("<a href='map.html?address=" + results[i].restaurant.location.address + "'>").text(location);
                 restaurantAddress.prepend(pOne);
+                pOne.addClass("restaurants-location");
+
 
                 var pTwo = $("<h3>").text("Restaurant: " + restaurantName);
                 restaurantNameforHTML.prepend(pTwo);
+                pTwo.addClass("restaurants");
 
             }
         }
@@ -191,7 +208,6 @@ function displayRecipes() {
                     $("<td>").html("<a href='https://www.yummly.com/recipe/" + yummlyResults[i].id + "'>" + yummlyResults[i].recipeName + "</a>"),
                     $("<td>").text(yummlyResults[i].sourceDisplayName),
                     $("<td>").html("<img src='" + yummlyResults[i].smallImageUrls[0] + "'>"),
-                    $("</tr>")
                 );
 
                 $("#stay-in-tbody").append(newRow);
