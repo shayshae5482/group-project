@@ -132,10 +132,6 @@ $("#reset-button").on("click", function () {
 });
 
 
-<<<<<<< HEAD
-// Zomato API call
-function displayRestaurants() {
-=======
 
     //use the this method to display cuisine type
     //var goOut = $(this).attr("#go-out");
@@ -143,7 +139,6 @@ function displayRestaurants() {
     //Zomato API key//
 
     function displayRestaurants() {
->>>>>>> ec8e5a28cabe9fc496343a850b1ea7069a8eabaf
 
     var queryURL = "https://developers.zomato.com/api/v2.1/search?entity_id=" + zomatoCityID + "&entity_type=city&q=" + cuisineChoice;
 
