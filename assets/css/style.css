@@ -10,6 +10,9 @@ body {
   min-height: 1500px;
 }
 
+p {
+  font-size: 18px;
+}
 .btn {
   padding: 3px;
   font-size: 20px;
@@ -83,6 +86,12 @@ h2 {
   color: #58391e;
 }
 
+.developer-names {
+  font-weight: bold;
+  font-size: 30px;
+  color: #58391e;-
+}
+
 h3 {
   font-weight: bold;
   font-size: 20px;
@@ -153,8 +162,8 @@ body {
 /*image resized*/
 
 .profile-image {
-  width:100px;
-  height:100px;
+  width:200px;
+  height:200px;
 }
 
 .restaurants:first-child {
