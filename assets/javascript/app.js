@@ -1,13 +1,6 @@
 
-//Hamburger in nav menu
-// Look for .hamburger
-var hamburger = document.querySelector(".hamburger--spring-r");
-// On click
-hamburger.addEventListener("click", function() {
-  // Toggle class "is-active"
-  hamburger.classList.toggle("is-active");
-  // Do something else, like open/close menu
-});
+
+
 var cuisineChoice;
 var zomatoCityID;
 
@@ -118,11 +111,11 @@ $(document).ready(function () {
         displayRestaurants();
     })
 
-function resetResults() {
-    $('.item').empty();
-    $("#stay-in-tbody").empty();
-    
-}
+    function resetResults() {
+        $('.item').empty();
+        $("#stay-in-tbody").empty();
+
+    }
     // on submit
     $("#submit-button").on("click", function () {
         resetResults()
@@ -133,7 +126,7 @@ function resetResults() {
 
 $("#reset-button").on("click", function () {
     // clears value from button
-$("#go-out").trigger("reset");
+    $("#go-out").trigger("reset");
 });
 
 
@@ -224,8 +217,8 @@ function displayRecipes() {
         });
 
 };
-    
 
 
-    
+
+
 

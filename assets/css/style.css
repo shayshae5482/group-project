@@ -10,30 +10,51 @@ body {
   min-height: 1500px;
 }
 
-.hamburger--spring-r {
-  background-color: #F9D5AC;
-  position: relative;
-  display: inline-block;
+.btn {
+  padding: 3px;
+  font-size: 20px;
+  border-radius: 2px;
+  min-width: 100px;
+  color: #F9D5AC;
+  background-color: #382718;
+  border: 1px solid #382718;
+  letter-spacing: 1.5px;
 }
 
-.tooltiptext {
-  visibility: hidden;
-  width: 200px;
-  background-color: rgb(240, 221, 200);
+button {
+  padding: 3px;
+  font-size: 20px;
+  border-radius: 2px;
+  min-width: 100px;
+  margin: 5px;
+  margin-left: 10px; 
+  color: #F9D5AC;
+  background-color: #382718;
+  border: 1px solid #382718;
+  letter-spacing: 1.5px;
+}
+
+.btn:hover,
+button:hover {
+  background-color: #BC956B;
+  border: solid 1px #C3AE03;
+}
+
+.dropdown-item:hover{
+  background-color: rgb(255, 229, 202);
+}
+
+#dropdownMenuLink{
+  background-color: #C3AE03;
   color: #382718;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
   font-family: 'Yanone Kaffeesatz', sans-serif;
-
-  /* Position the hamburger */
-  position: absolute;
-  z-index: 1;
 }
 
-.hamburger--spring-r:hover .tooltiptext {
-  visibility: visible;
+.dropdown,
+.dropdown-menu {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
 }
+
 
 .navbar {
   background-color: #382718;
@@ -114,24 +135,6 @@ body {
   margin-right: 0;
 }
 
-button {
-  padding: 3px;
-  font-size: 20px;
-  border-radius: 2px;
-  min-width: 100px;
-  margin: 5px;
-  margin-left: 10px; 
-  color: #F9D5AC;
-  background-color: #382718;
-  border: 1px solid #382718;
-  letter-spacing: 1.5px;
-}
-
-
-button:hover {
-  background-color: #BC956B;
-  border: solid 1px #C3AE03;
-}
 
 /* Shared styling for these divs */
 #go-out,

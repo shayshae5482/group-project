@@ -39,15 +39,16 @@
             <nav class="navbar">
                 <div class="container">
 
-                    <button class="hamburger--spring-r" type="button">
-
-                        <span class="hamburger-box">
-                            <span class="tooltiptext">Go back to What's for Dinner!</span>
-                            <a href="index.html">
-                                <span class="hamburger-inner"></span>
-                            </a>
-                        </span>
-                    </button>
+                        <div class="dropdown show">
+                                <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    MENU </a>
+        
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="index.html">Search for more recipes and restaurants!</a>
+                                    <a class="dropdown-item" href="map.html">Map</a>
+                                </div>
+                            </div>
 
                     <span class="navbar-brand">Meet the Developers!</span>
                     <div id="clock" class="clock">loading ...</div>
@@ -75,7 +76,6 @@
                             you'd like to hear more!</p>
                     </div>
 
-                    <div class="container main-container">
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="container" id="julie-view">
@@ -103,6 +103,10 @@
                 </footer>
                 <!-- JS -->
                 <script src="assets/javascript/app.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                    crossorigin="anonymous"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                    crossorigin="anonymous"></script>
 
 </body>
 
