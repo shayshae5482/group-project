@@ -14,9 +14,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
 
-    <!--Hamburger CSS-->
-    <link href="assets/css/hamburgers.css" rel="stylesheet">
-
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
 
@@ -38,15 +35,16 @@
             <nav class="navbar">
                 <div class="container">
 
-                    <button class="hamburger--spring-r" type="button">
+                    <div class="dropdown show">
+                        <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            MENU </a>
 
-                        <span class="hamburger-box">
-                            <span class="tooltiptext">Meet the developers!</span>
-                            <a href="profiles.html">
-                                <span class="hamburger-inner"></span>
-                            </a>
-                        </span>
-                    </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="profiles.html">Meet the developers!</a>
+                            <a class="dropdown-item" href="map.html">Map</a>
+                        </div>
+                    </div>
 
                     <span class="navbar-brand">What's for dinner, DFW?</span>
                     <div id="clock" class="clock">loading ...</div>
@@ -118,6 +116,10 @@
             </footer>
             <!-- JS -->
             <script src="assets/javascript/app.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous"></script>
 
 </body>
 
