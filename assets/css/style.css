@@ -9,6 +9,10 @@ body {
   letter-spacing: 1.5px;
 }
 
+.hamburger--spring-r {
+  background-color: #F9D5AC;
+}
+
 .navbar {
   background-color: #382718;
   font-family: "Homemade Apple", cursive;
@@ -19,6 +23,9 @@ a {
   font-weight: bold;
  }
  
+a:hover {
+  color: #382718;
+}
 
 .navbar-brand {
   background-color: #382718;
@@ -53,6 +60,8 @@ body {
   flex-direction: column;
   overflow-y: scroll;
 }
+
+
 
 .content {
   flex: 1 0 auto;
@@ -114,6 +123,21 @@ button:hover {
   padding-left: 15px;
 }
 
+
+/*image resized*/
+
+img {
+  width:100px;
+  height:100px;
+
+.restaurants:first-child {
+  margin-top: 0px;
+}
+
+.restaurants {
+  margin-top: 25px;
+}
+
 /*I made this a sticky footer...feel free to "unstick"*/
 .footer {
   flex-shrink: 0;
@@ -127,3 +151,10 @@ button:hover {
   width: 100%;
   color: #F9D5AC;
 }
+
+@media screen and (max-width:640px) {
+.navbar-brand {
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
