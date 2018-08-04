@@ -7,6 +7,7 @@ body {
   background-size: cover;
   font-family: 'Yanone Kaffeesatz', sans-serif;
   letter-spacing: 1.5px;
+  min-height: 1500px;
 }
 
 .hamburger--spring-r {
@@ -138,19 +139,21 @@ button:hover {
   background-color: #a57548;
   opacity: .9;
   color: #382718;
-  min-height: 400px;
+  min-height: 900px;
   margin-bottom: 100px;
   padding: 10px;
   padding-left: 15px;
+  position: relative;
 }
 
 
 /*image resized*/
 
-img {
+.profile-image {
   width:100px;
   height:100px;
 }
+
 .restaurants:first-child {
   margin-top: 0px;
 }
@@ -167,11 +170,12 @@ img {
   height: 45px;
   line-height: 45px;
   position: fixed;   
-  bottom:0;          	
-  left:0;            
+  bottom: 0;          	
+  left: 0;            
   width: 100%;
   color: #F9D5AC;
 }
+
 
 @media screen and (max-width:640px) {
 .navbar-brand {
