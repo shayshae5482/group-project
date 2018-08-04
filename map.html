@@ -27,183 +27,231 @@
   <!-- Moment JS -->
   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
-
-  <header>
-    <nav class="navbar">
-      <div class="container">
-
-        <div class="dropdown show">
-          <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            MENU </a>
-
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" href="index.html">Search for more recipes and restaurants!</a>
-            <a class="dropdown-item" href="profiles.html">Meet the developers!</a>
-          </div>
-        </div>
-        <span class="navbar-brand">Find your restaurant</span>
-        <div id="clock" class="clock">loading ...</div>
-      </div>
-    </nav>
-  </header>
-
-  <style>
-    /* Always set the map height explicitly to define the size of the div
+</head>
+<style>
+  /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
 
-    #map {
-      height: 100%;
-    }
+  #map {
+    height: 100%;
+  }
 
-    /* Optional: Makes the sample page fill the window. */
+  /* Optional: Makes the sample page fill the window. */
 
-    html,
-    body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
 
-    #right-panel {
-      font-family: 'Roboto', 'sans-serif';
-      line-height: 30px;
-      padding-left: 10px;
-    }
+  #right-panel {
+    font-family: 'Roboto', 'sans-serif';
+    line-height: 30px;
+    padding-left: 10px;
+  }
 
-    #right-panel select,
-    #right-panel input {
-      font-size: 15px;
-    }
+  #right-panel select,
+  #right-panel input {
+    font-size: 15px;
+  }
 
-    #right-panel select {
-      width: 100%;
-    }
+  #right-panel select {
+    width: 100%;
+  }
 
-    #right-panel i {
-      font-size: 12px;
-    }
+  #right-panel i {
+    font-size: 12px;
+  }
 
-    #right-panel {
-      font-family: Arial, Helvetica, sans-serif;
-      position: absolute;
-      right: 5px;
-      top: 60%;
-      margin-top: -195px;
-      height: 330px;
-      width: 200px;
-      padding: 5px;
-      z-index: 5;
-      border: 1px solid #999;
-      background: #fff;
-    }
+  #right-panel {
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute;
+    right: 5px;
+    top: 60%;
+    margin-top: -195px;
+    height: 330px;
+    width: 200px;
+    padding: 5px;
+    z-index: 5;
+    border: 1px solid #999;
+    background: #fff;
+  }
 
-    h2 {
-      font-size: 22px;
-      margin: 0 0 5px 0;
-    }
+  h2 {
+    font-size: 22px;
+    margin: 0 0 5px 0;
+  }
 
-    ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-      height: 271px;
-      width: 200px;
-      overflow-y: scroll;
-    }
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    height: 271px;
+    width: 200px;
+    overflow-y: scroll;
+  }
 
-    li {
-      background-color: #f1f1f1;
-      padding: 10px;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
-    }
+  li {
+    background-color: #f1f1f1;
+    padding: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
 
-    li:nth-child(odd) {
-      background-color: #fcfcfc;
-    }
+  li:nth-child(odd) {
+    background-color: #fcfcfc;
+  }
 
-    #more {
-      width: 100%;
-      margin: 5px 0 0 0;
-    }
+  #more {
+    width: 100%;
+    margin: 5px 0 0 0;
+  }
 
-    .controls {
-      background-color: #fff;
-      border-radius: 2px;
-      border: 1px solid transparent;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-      box-sizing: border-box;
-      font-family: Roboto;
-      font-size: 15px;
-      font-weight: 300;
-      height: 29px;
-      margin-left: 17px;
-      margin-top: 10px;
-      outline: none;
-      padding: 0 11px 0 13px;
-      text-overflow: ellipsis;
-      width: 400px;
-    }
+  .controls {
+    background-color: #fff;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    height: 29px;
+    margin-left: 17px;
+    margin-top: 10px;
+    outline: none;
+    padding: 0 11px 0 13px;
+    text-overflow: ellipsis;
+    width: 400px;
+  }
 
-    .controls:focus {
-      border-color: #4d90fe;
-    }
+  .controls:focus {
+    border-color: #4d90fe;
+  }
 
-    .title {
-      font-weight: bold;
-    }
+  .title {
+    font-weight: bold;
+  }
 
-    .address {
-      font-weight: bold;
-    }
+  .address {
+    font-weight: bold;
+  }
 
-    #infowindow-content {
-      display: none;
-    }
+  #infowindow-content {
+    display: none;
+  }
 
-    #map #infowindow-content {
-        display: inline;
-    }
-      
-    </style>
-    <script>
-      // This example requires the Places library. Include the libraries=places
-      // parameter when you first load the API. For example:
-      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+  #map #infowindow-content {
+    display: inline;
+  }
+</style>
 
-      var map;
+<header>
+  <nav class="navbar">
+    <div class="container">
 
-      function initMap() {
-        // Create the map.
-        var dallas = {lat: 31.866, lng: -96.196};
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: dallas,
-          zoom: 6
-        });
+      <div class="dropdown show">
+        <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          MENU </a>
 
-
-
-
-// file:///Users/calebreed/Documents/HOMEWORK/group-project/map.html?address=2950%20Craig%20Drive,%20Suite%20304,%20McKinney%2075070
-var parsedUrl = new URL(window.location.href);
-console.log(parsedUrl.searchParams.get("address")); // address=2950%20Craig%20Drive,%20Suite%20304,%20McKinney%2075070
-var input = document.getElementById('address');
-}
-    </script>
-
-  </head>
-
-  <body>
-    <div id="map"></div>
-    <div id="right-panel">
-      <h2>Results</h2>
-      <ul id="results"></ul>
-      <button id="more">More results</button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item" href="index.html">Search for more recipes and restaurants!</a>
+          <a class="dropdown-item" href="profiles.html">Meet the developers!</a>
+        </div>
+      </div>
+      <span class="navbar-brand">Find your restaurant</span>
+      <div id="clock" class="clock">loading ...</div>
     </div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzU5XUoyGzYtq3mVaTpkkcGRm8wu6AyUU&libraries=places&callback=initMap" async defer></script>    
+  </nav>
+</header>
+
+<body>
+
+  <script>
+    // This example requires the Places library. Include the libraries=places
+    // parameter when you first load the API. For example:
+    // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+    // file:///Users/calebreed/Documents/HOMEWORK/group-project/map.html?address=2950%20Craig%20Drive,%20Suite%20304,%20McKinney%2075070
+    var parsedUrl = new URL(window.location.href);
+    console.log(parsedUrl.searchParams.get("address")); // address=2950%20Craig%20Drive,%20Suite%20304,%20McKinney%2075070
+
+    var map;
+    var address = parsedUrl.searchParams.get("address")
+    function initMap() {
+      geocoder = new google.maps.Geocoder();
+      // Create the map.
+      var dallas = { lat: 31.866, lng: -96.196 };
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: dallas,
+        zoom: 6
+      });
+      
+
+       if (geocoder) {
+    geocoder.geocode({
+      'address': address
+    }, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        if (status != google.maps.GeocoderStatus.ZERO_RESULTS) {
+          map.setCenter(results[0].geometry.location);
+
+          var infowindow = new google.maps.InfoWindow({
+            content: '<b>' + address + '</b>',
+            size: new google.maps.Size(150, 50)
+          });
+
+          var marker = new google.maps.Marker({
+            position: results[0].geometry.location,
+            map: map,
+            title: address
+          });
+          google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map, marker);
+          });
+
+        } else {
+          alert("No results found");
+        }
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
+  }
+      var marker = new google.maps.Marker({
+        position: results[0].geometry.location,
+        map: map,
+        title: address
+      });
+      google.maps.event.addListener(marker, 'click', function () {
+        infowindow.open(map, marker);
+      });
+
+    }
+  </script>
+
+</head>
+
+<body>
+
+  <div id="map"></div>
+  <div id="right-panel">
+    <h2>Results</h2>
+    <ul id="results"></ul>
+    <button id="more">More results</button>
+  </div>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzU5XUoyGzYtq3mVaTpkkcGRm8wu6AyUU&libraries=places&callback=initMap"
+    async defer></script>
   <script src="assets/javascript/app.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 </body>
-  
+
 
 </html>
