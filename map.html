@@ -160,24 +160,24 @@
           zoom: 6
         });
 
+
+
+
 // file:///Users/calebreed/Documents/HOMEWORK/group-project/map.html?address=2950%20Craig%20Drive,%20Suite%20304,%20McKinney%2075070
 var parsedUrl = new URL(window.location.href);
 console.log(parsedUrl.searchParams.get("address")); // address=2950%20Craig%20Drive,%20Suite%20304,%20McKinney%2075070
-      }
+var input = document.getElementById('address');
+}
     </script>
   </head>
   <body>
     <div id="map"></div>
     <div id="right-panel">
       <h2>Results</h2>
-      <ul id="places"></ul>
+      <ul id="results"></ul>
       <button id="more">More results</button>
     </div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzU5XUoyGzYtq3mVaTpkkcGRm8wu6AyUU&libraries=places&callback=initMap" async defer></script>
-  
-
-
-    <script src="assets/javascript/app.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzU5XUoyGzYtq3mVaTpkkcGRm8wu6AyUU&libraries=places&callback=initMap" async defer></script>    <script src="assets/javascript/app.js"></script>
 </body>
 
 </html>
