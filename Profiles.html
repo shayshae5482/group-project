@@ -7,9 +7,6 @@
     <title>Profiles</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!--Hamburger CSS-->
-    <link href="assets/css/hamburgers.css" rel="stylesheet">
-
     <!-- Reset -->
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/reset.css" />
 
@@ -39,15 +36,15 @@
             <nav class="navbar">
                 <div class="container">
 
-                    <button class="hamburger--spring-r" type="button">
+                    <div class="dropdown show">
+                        <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            MENU </a>
 
-                        <span class="hamburger-box">
-                            <span class="tooltiptext">Go back to What's for Dinner?</span>
-                            <a href="index.html">
-                                <span class="hamburger-inner"></span>
-                            </a>
-                        </span>
-                    </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="index.html">Search for more recipes and restaurants!</a>
+                            <a class="dropdown-item" href="map.html">Map</a>
+                        </div>
+                    </div>
 
                     <span class="navbar-brand">Meet the Developers!</span>
                     <div id="clock" class="clock">loading ...</div>
@@ -59,50 +56,77 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="container" id="alex-view">
-                        <img class="profile-image" src="assets/images/Alex.jpg">
-                        <h2>Alex Bowen</h2>
-                        <p>Alex Web developer trained in graphic design and digital communication.</p>
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <img class="profile-image" src="assets/images/Alex.jpg">
+                            </div>
+                            <div class="col-lg-9">
+                                <h2 class="developer-names">Alex Bowen</h2>
+                                <p>I am a web developer, graphic designer, musician, podcaster, writer, and communication Swiss
+                                    army knife. I aim to build beautiful, functional, well-branded web apps for businesses,
+                                    non-profits, and friends.</p>
+                                <p>I live in East Texas with my husband, two cats, and many (many) books.</p>
+                            </div>
+                        </div>
                     </div>
                     <div class="container" id="caleb-view">
-                        <img class="profile-image" src="assets/images/Caleb.png">
-                        <h2>Caleb Reed</h2>
-                        <p>I am a 25 year old driven student, guitarist, and music producer. I am creative, passionate, and
-                            productive. My wife and I reside in Arlington, Texas with our two cat children Zeppelin and Myla.
-                            We love to cook, travel, wine taste, Netflix binge, and enjoy breezy patios. In my spare time
-                            you can find me writing music or listening to groovy classic rock jams as well as grill, watch
-                            football, and golf.My goals for this next year include completing SMU's coding program, nailing
-                            a great job in Dallas, moving to the big city, and traveling to Europe. Please contact me if
-                            you'd like to hear more!</p>
-                    </div>
-
-                    <div class="container main-container">
                         <div class="row">
-                            <div class="col-lg-12">
-                                <div class="container" id="julie-view">
-                                    <img class="profile-image" src="assets/images/julie.jpg">
-                                    <h2>Julie Hodges</h2>
-                                    <p>After a fulling career as a science teacher, I am entering the world of technology to
-                                        pursue a career in web development, with a focus on cryptocurrencies. I reside in
-                                        North Fort Worth with my husband, two kids who have an abundance of energy and curiosity,
-                                        and a miniature dachshund, nicknamed "Dog of Mischief." We frequently explore the
-                                        backroads of the great state of Texas or escape to the mountains to hike. I am interested
-                                        in blockchain technology and cryptoassets
-                                    </p>
-                                </div>
-                                <div class="container" id="shay-view">
-                                    <img class="profile-image" src="assets/images/Shay.jpg">
-                                    <h2>Shay Banks</h2>
-                                    <p>Shay is a freelance copywriter and with over a decade of digital marketing experience.</p>
-                                </div>
+                            <div class="col-lg-3">
+                                <img class="profile-image" src="assets/images/Caleb.png">
+                            </div>
+                            <div class="col-lg-9">
+                                <h2 class="developer-names">Caleb Reed</h2>
+                                <p>I am a 25 year old driven student, guitarist, and music producer. I am creative, passionate,
+                                    and productive. My wife and I reside in Arlington, Texas with our two cat children Zeppelin
+                                    and Myla. We love to cook, travel, wine taste, Netflix binge, and enjoy breezy patios.
+                                    In my spare time you can find me writing music or listening to groovy classic rock jams
+                                    as well as grill, watch football, and golf.My goals for this next year include completing
+                                    SMU's coding program, nailing a great job in Dallas, moving to the big city, and traveling
+                                    to Europe. Please contact me if you'd like to hear more!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container" id="julie-view">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <img class="profile-image" src="assets/images/julie.jpg">
+                            </div>
+                            <div class="col-lg-9">
+                                <h2 class="developer-names">Julie Hodges</h2>
+                                <p>After a fulling career as a science teacher, I am entering the world of technology to pursue
+                                    a career in web development, with a focus on cryptocurrencies. I reside in North Fort
+                                    Worth with my husband, two kids who have an abundance of energy and curiosity, and a
+                                    miniature dachshund, nicknamed "Dog of Mischief." We frequently explore the backroads
+                                    of the great state of Texas or escape to the mountains to hike. I am interested in blockchain
+                                    technology and cryptoassets
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container" id="shay-view">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <img class="profile-image" src="assets/images/Shay.jpg">
+                            </div>
+                            <div class="col-lg-9">
+                                <h2 class="developer-names">Shay Banks</h2>
+                                <p>Shay is a freelance copywriter and with over a decade of digital marketing experience.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <footer class="footer">
-                    Copyright &copy; 2018
-                </footer>
-                <!-- JS -->
-                <script src="assets/javascript/app.js"></script>
+            </div>
+        </div>
+        <footer class="footer">
+            Copyright &copy; 2018
+        </footer>
+    </div>
+    <!-- JS -->
+    <script src="assets/javascript/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 
 </body>
 
