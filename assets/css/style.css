@@ -126,9 +126,10 @@ button:hover {
 
 /*image resized*/
 
-img {
+.profile-image {
   width:100px;
   height:100px;
+}
 
 .restaurants:first-child {
   margin-top: 0px;
@@ -146,8 +147,8 @@ img {
   height: 45px;
   line-height: 45px;
   position: fixed;   
-  bottom:0;          	
-  left:0;            
+  bottom: 0;          	
+  left: 0;            
   width: 100%;
   color: #F9D5AC;
 }
