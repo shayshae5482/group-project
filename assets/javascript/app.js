@@ -5,27 +5,33 @@ $(document).ready(function () {
     $(".attribution").hide();
     // Initial array of food choices, along with Zomato ID
 
-    var cuisines = ["Mexican", "Italian", "Chinese", "BBQ", "Hamburgers", "Mediterranean", "Wings", "Thai", "Pizza", "Japanese", "Chicken", "Deli", "Vietnamese"];
+    var cuisines = ["BBQ", "Cajun", "Chicken", "Chinese", "Deli", "Greek", "Hamburgers", "Italian", "Japanese", "Mediterranean", "Mexican", "Pizza", "Thai", "Vietnamese", "Wings"];
 
     //Array of cities to choose from, along with Zomato ID
     var dfwCities = [{
-        name: "Dallas",
-        cityID: "276",
-    }, {
+        name: "Allen",
+        cityID: "1204",
+    },{
         name: "Arlington",
         cityID: "10981",
     }, {
-        name: "Fort Worth",
-        cityID: "10978",
-    }, {
-        name: "Plano",
-        cityID: "11003",
-    }, {
-        name: "McKinney",
-        cityID: "11001",
+        name: "Dallas",
+        cityID: "276",
     }, {
         name: "Denton",
         cityID: "9244",
+    }, {
+        name: "Fort Worth",
+        cityID: "10978",
+    },{
+        name: "Keller",
+        cityID: "10996",
+    },{
+        name: "McKinney",
+        cityID: "11001",
+    }, {
+        name: "Plano",
+        cityID: "11003",
     }, {
         name: "Southlake",
         cityID: "11010",
@@ -90,9 +96,8 @@ $(document).ready(function () {
         $(".attribution").show();
 
 
-        $('.item').empty();
-        displayRestaurants();
-    })
+     
+            })
 
     //function to grab city id from zomato and store it in a var
     $(".city-btn").on("click", function () {
@@ -127,8 +132,18 @@ $("#reset-button").on("click", function () {
 });
 
 
+<<<<<<< HEAD
 // Zomato API call
 function displayRestaurants() {
+=======
+
+    //use the this method to display cuisine type
+    //var goOut = $(this).attr("#go-out");
+
+    //Zomato API key//
+
+    function displayRestaurants() {
+>>>>>>> ec8e5a28cabe9fc496343a850b1ea7069a8eabaf
 
     var queryURL = "https://developers.zomato.com/api/v2.1/search?entity_id=" + zomatoCityID + "&entity_type=city&q=" + cuisineChoice;
 
@@ -142,32 +157,47 @@ function displayRestaurants() {
             console.log(results);
 
 
-
-            for (var i = 0; i < 10; i++) {
-
-                var restaurantAddress = $(".item");
-                var location = results[i].restaurant.location.address;
-
-                var restaurantNameforHTML = $(".item");
-                var restaurantName = results[i].restaurant.name;
-
-                console.log(location);
-                var pOne = $("<a href='map.html?address=" + results[i].restaurant.location.address + "'>").text(location);
-                restaurantAddress.prepend(pOne);
-                pOne.addClass("restaurants-location");
-
-
-                var pTwo = $("<h3>").text("Restaurant: " + restaurantName);
-                restaurantNameforHTML.prepend(pTwo);
-                pTwo.addClass("restaurants");
-
+            var limit = 10;
+            if (results.length < 10) {
+                limit = results.length;
             }
+            function showResults() {
+                for (var i = 0; i < limit; i++) {
+
+
+                    var restaurantAddress = $(".item");
+                    var location = results[i].restaurant.location.address;
+
+                    var restaurantNameforHTML = $(".item");
+                    var restaurantName = results[i].restaurant.name;
+
+                    console.log(location);
+                    var pOne = $("<a href='map.html?address=" + results[i].restaurant.location.address + "'>").text(location);
+                    restaurantAddress.prepend(pOne);
+                    pOne.addClass("restaurants-location");
+
+
+                    var pTwo = $("<h3>").text("Restaurant: " + restaurantName);
+                    restaurantNameforHTML.prepend(pTwo);
+                    pTwo.addClass("restaurants");
+
+                }
+            }
+            if ($(".item").empty()) {
+              showResults();
+            }
+
+            if (limit == 0) {
+                console.log("another test");
+                var noResults = $(".item");
+                var pThree = $("<h3>").text("Sorry this city doesn't have a restaurant with that cuisine. Try another cuisine.");
+                noResults.prepend(pThree);
+            }
+
         }
     });
 
-
-};
-
+    }
 
 // yummly API call
 function displayRecipes() {
