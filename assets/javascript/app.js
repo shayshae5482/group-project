@@ -1,6 +1,3 @@
-
-
-
 var cuisineChoice;
 var zomatoCityID;
 
@@ -130,13 +127,8 @@ $("#reset-button").on("click", function () {
 });
 
 
-
+// Zomato API call
 function displayRestaurants() {
-
-    //use the this method to display cuisine type
-    //var goOut = $(this).attr("#go-out");
-
-    //Zomato API key//
 
     var queryURL = "https://developers.zomato.com/api/v2.1/search?entity_id=" + zomatoCityID + "&entity_type=city&q=" + cuisineChoice;
 
@@ -178,10 +170,6 @@ function displayRestaurants() {
 
 
 // yummly API call
-
-
-// yummly API call
-
 function displayRecipes() {
 
     var yummlyAPIkey = "d246cc7b49fa9a139f8dbcbac1a815c2";
