@@ -12,3 +12,5 @@ Yummly, Zomato, Google Maps
 
 # Website Screenshot
 ![screenshot](assets/images/project-screenshot.png)
+
+Live Link: https://shayshae5482.github.io/group-project/
