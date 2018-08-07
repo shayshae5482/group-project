@@ -8,8 +8,6 @@ html, CSS, JavaScript, jquery, AJAX, Bootstrap, moment.js, google fonts
 # API's used:
 Yummly, Zomato, Google Maps
 
-# Live Link:
-
 # Website Screenshot
 ![screenshot](assets/images/project-screenshot.png)
 
