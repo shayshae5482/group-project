@@ -3,15 +3,15 @@ var zomatoCityID;
 
 $(document).ready(function () {
     $(".attribution").hide();
-    // Initial array of food choices, along with Zomato ID
 
+    // Initial array of food choices, along with Zomato ID
     var cuisines = ["BBQ", "Cajun", "Chicken", "Chinese", "Deli", "Greek", "Hamburgers", "Italian", "Japanese", "Mediterranean", "Mexican", "Pizza", "Thai", "Vietnamese", "Wings"];
 
     //Array of cities to choose from, along with Zomato ID
     var dfwCities = [{
         name: "Allen",
         cityID: "10980",
-    },{
+    }, {
         name: "Arlington",
         cityID: "10981",
     }, {
@@ -23,10 +23,10 @@ $(document).ready(function () {
     }, {
         name: "Fort Worth",
         cityID: "10978",
-    },{
+    }, {
         name: "Keller",
         cityID: "10996",
-    },{
+    }, {
         name: "McKinney",
         cityID: "11001",
     }, {
@@ -36,19 +36,23 @@ $(document).ready(function () {
         name: "Southlake",
         cityID: "11010",
     }];
+
     // Looping through the array of food cuisines
     for (var i = 0; i < cuisines.length; i++) {
 
         // Then dynamically generates buttons for each cuisines in the array
         // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
         var cuisineButton = $("<button>");
+
         // Adding a class of cuisine-btn to our button
         cuisineButton.addClass("cuisine-btn");
+
         // Adding a data-attribute
         cuisineButton.attr("data-name", cuisines[i]);
 
         // Providing the initial button text
         cuisineButton.text(cuisines[i]);
+
         // Adding the button to the buttons-view div
         $("#buttons-view").append(cuisineButton);
     }
@@ -59,20 +63,25 @@ $(document).ready(function () {
         // Then dynamically generates buttons for each cuisines in the array
         // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
         var cityButton = $("<button>");
+
         // Adding a class of cuisine-btn to our button
         cityButton.addClass("city-btn");
+
         // Adding a data-attribute
         cityButton.attr("data-name", dfwCities[j].name);
         cityButton.attr("data-id", dfwCities[j].cityID);
         console.log(dfwCities[j].name);
+
         // Providing the initial button text
         cityButton.text(dfwCities[j].name);
+
         // Adding the button to the buttons-view div
         $("#cities-view").append(cityButton);
     }
 
     //Adding moment.js to get clock at the top of the screen
     var currentTime = moment();
+
     //displays current time on the jumbotron
     $('#clock').html(moment(currentTime).format('MMMM D. YYYY LT'));
 
@@ -84,6 +93,7 @@ $(document).ready(function () {
 
     // Button on-click
     $(".cuisine-btn").on("click", function () {
+
         // grabs value from button
         // stores it in a variable
         cuisineChoice = $(this).attr("data-name");
@@ -96,8 +106,8 @@ $(document).ready(function () {
         $(".attribution").show();
 
 
-     
-            })
+
+    })
 
     //function to grab city id from zomato and store it in a var
     $(".city-btn").on("click", function () {
@@ -118,6 +128,7 @@ $(document).ready(function () {
         $("#stay-in-tbody").empty();
 
     }
+
     // on submit
     $("#submit-button").on("click", function () {
         resetResults()
@@ -127,18 +138,13 @@ $(document).ready(function () {
 
 
 $("#reset-button").on("click", function () {
+
     // clears value from button
     $("#go-out").trigger("reset");
 });
 
 
-
-    //use the this method to display cuisine type
-    //var goOut = $(this).attr("#go-out");
-
-    //Zomato API key//
-
-    function displayRestaurants() {
+function displayRestaurants() {
 
     var queryURL = "https://developers.zomato.com/api/v2.1/search?entity_id=" + zomatoCityID + "&entity_type=city&q=" + cuisineChoice;
 
@@ -150,7 +156,6 @@ $("#reset-button").on("click", function () {
 
             var results = response.restaurants;
             console.log(results);
-
 
             var limit = 10;
             if (results.length < 10) {
@@ -179,7 +184,7 @@ $("#reset-button").on("click", function () {
                 }
             }
             if ($(".item").empty()) {
-              showResults();
+                showResults();
             }
 
             if (limit == 0) {
@@ -188,19 +193,17 @@ $("#reset-button").on("click", function () {
                 var pThree = $("<h3>").text("Sorry this city doesn't have a restaurant with that cuisine. Try another cuisine.");
                 noResults.prepend(pThree);
             }
-
         }
     });
+}
 
-    }
 
-// yummly API call
+// YUMMLY (STAY-IN DIV)
 function displayRecipes() {
 
     var yummlyAPIkey = "d246cc7b49fa9a139f8dbcbac1a815c2";
     var yummlyAppID = "3fce4689";
 
-    // var yummlyQueryURL = "https://api.yummly.com/v1/api/recipes?_app_id=" + yummlyAppID + "&_app_key=" + yummlyAPIkey + "&q=" + cuisineChoice;
     var yummlyQueryURL = "https://api.yummly.com/v1/api/recipes?_app_id=" + yummlyAppID + "&_app_key=" + yummlyAPIkey + "&q=" + cuisineChoice + "&allowedCuisine[]=cuisine^cuisine-" + cuisineChoice;
 
 
@@ -210,8 +213,8 @@ function displayRecipes() {
     })
         .then(function (response) {
             console.log(response);
-            // // create a table with links and photos\
 
+            // create a table with links and photos
             var yummlyResults = response.matches;
 
             for (var i = 0; i < 9; i++) {
@@ -223,12 +226,8 @@ function displayRecipes() {
                 );
 
                 $("#stay-in-tbody").append(newRow);
-
-
             };
-
         });
-
 };
 
 
